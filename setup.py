@@ -6,8 +6,8 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="speakleash",
     version="0.0.1",
-    author="SpeakLeash",
-    author_email="dude@speakleash.org",
+    author="SpeakLeash Team",
+    author_email="team@speakleash.org",
     description="SpeakLeash agnostic dataset for Polish",
     long_description=long_description,
     long_description_content_type="text/markdown",

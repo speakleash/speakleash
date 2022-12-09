@@ -5,14 +5,15 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="speakleash",
-    version="0.0.1",
+    version="0.0.3",
     author="SpeakLeash Team",
     author_email="team@speakleash.org",
     description="SpeakLeash agnostic dataset for Polish",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/speakleash/speakleash",
-    packages=setuptools.find_packages(),
+    package_dir = {"": "speakleash"},
+    packages=setuptools.find_packages(where="speakleash"),
     python_requires='>=3.6',
     install_requires=[
         'requests',

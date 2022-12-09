@@ -50,6 +50,11 @@ class SpeakleashDataset(object):
         return s
 
     @property
+    def documents(self):
+        s = self.manifest.get("stats",{}).get("documents",0)
+        return s
+
+    @property
     def jsonl_zst_file_size(self):
         return self.manifest.get("file_size",0)
 
@@ -86,8 +91,12 @@ class Speakleash(object):
     def __init__(self, replicate_dir):
         self.replicate_dir = replicate_dir
         self.datasets = []
+        self.datasets.append(SpeakleashDataset("thesis", "https://zazepa.pl/speakleash/", self.replicate_dir))
         self.datasets.append(SpeakleashDataset("plwiki", "https://zazepa.pl/speakleash/", self.replicate_dir))
-
+        self.datasets.append(SpeakleashDataset("1000_novels_corpus_CLARIN-PL", "https://zazepa.pl/speakleash/", self.replicate_dir))
+        self.datasets.append(SpeakleashDataset("wolne_lektury_corpus", "https://zazepa.pl/speakleash/", self.replicate_dir))
+        self.datasets.append(SpeakleashDataset("project_gutenberg_pl_corpus", "https://zazepa.pl/speakleash/", self.replicate_dir))
+        self.datasets.append(SpeakleashDataset("open_subtitles_corpus", "https://zazepa.pl/speakleash/", self.replicate_dir))
     def get(self, name):
         for d in self.datasets:
             if d.name == name:

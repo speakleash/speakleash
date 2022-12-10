@@ -1,1 +1,1 @@
-from Speakleash import Speakleash
+from speakleash import Speakleash

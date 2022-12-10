@@ -1,4 +1,4 @@
-from SpeakleashDataset import SpeakleashDataset
+from speakleash import SpeakleashDataset
 
 class Speakleash(object):
 

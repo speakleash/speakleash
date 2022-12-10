@@ -12,8 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/speakleash/speakleash",
-    package_dir = {"": "speakleash"},
-    packages=setuptools.find_packages(where="speakleash"),
+    packages = ["speakleash"],
     python_requires='>=3.6',
     install_requires=[
         'requests',

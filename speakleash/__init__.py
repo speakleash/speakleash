@@ -72,11 +72,48 @@ class SpeakleashDataset(object):
         return s
 
     @property
+    def nouns(self):
+        return self.manifest.get("stats",{}).get("nouns",[])
+
+    @property
+    def verbs(self):
+        return self.manifest.get("stats",{}).get("verbs",[])
+
+    @property
+    def symbols(self):
+        return self.manifest.get("stats",{}).get("symbols",[])
+
+    @property
+    def punctuations(self):
+        return self.manifest.get("stats",{}).get("punctuations",[])
+
+    @property
+    def sentences(self):
+        return self.manifest.get("stats",{}).get("sentences",[])
+
+    @property
+    def words(self):
+        return self.manifest.get("stats",{}).get("words",[])
+
+    @property
+    def description(self):
+        return self.manifest.get("description","")
+
+    @property
+    def license(self):
+        return self.manifest.get("license","")
+
+    @property
+    def sources (self):
+        return self.manifest.get("sources",{})
+
+
+    @property
     def jsonl_zst_file_size(self):
         return self.manifest.get("file_size",0)
 
-    @property
-    def data(self):
+
+    def check_file(self):
 
         if not os.path.exists(self.replicate_dir):
             os.makedirs(self.replicate_dir, exist_ok=True)
@@ -92,8 +129,28 @@ class SpeakleashDataset(object):
 
         if not file_json_zst_exists:
             if not self._download_file(file_name_json_zst):
-                return None
-        
+                return False, ""
+
+        return True, file_path_json_zst
+
+
+    @property
+    def ext_data(self):
+
+        ok, file_path_json_zst = self.check_file()
+        if not ok:
+            return None
+
+        rdr = Reader(file_path_json_zst)
+        return rdr.stream_data(get_meta=True)
+
+    @property
+    def data(self):
+
+        ok, file_path_json_zst = self.check_file()
+        if not ok:
+            return None
+
         rdr = Reader(file_path_json_zst)
         return rdr.stream_data()
 

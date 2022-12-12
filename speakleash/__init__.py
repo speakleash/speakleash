@@ -15,6 +15,7 @@ class Speakleash(object):
         self.datasets.append(SpeakleashDataset("wolne_lektury_corpus", "https://zazepa.pl/speakleash/", self.replicate_dir))
         self.datasets.append(SpeakleashDataset("project_gutenberg_pl_corpus", "https://zazepa.pl/speakleash/", self.replicate_dir))
         self.datasets.append(SpeakleashDataset("open_subtitles_corpus", "https://zazepa.pl/speakleash/", self.replicate_dir))
+        self.datasets.append(SpeakleashDataset("biblioteka_nauki_pl_corpus", "https://zazepa.pl/speakleash/", self.replicate_dir))
     def get(self, name):
         for d in self.datasets:
             if d.name == name:
@@ -102,6 +103,10 @@ class SpeakleashDataset(object):
     @property
     def license(self):
         return self.manifest.get("license","")
+
+    @property
+    def category(self):
+        return self.manifest.get("category","")
 
     @property
     def sources (self):

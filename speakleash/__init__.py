@@ -3,20 +3,79 @@ import json
 from tqdm import tqdm
 import os
 from lm_dataformat import Reader
+import hashlib
+from datetime import datetime
+import glob
+
+class StructureDownloader(object):
+
+    def __init__(self, replicate_dir):
+        self.replicate_dir = replicate_dir
+
+    def _remove_old_files(self, url):
+        
+        hash = hashlib.md5(url.encode('utf-8')).hexdigest()
+        filter = os.path.join(self.replicate_dir, hash + "-*.json")
+        files = glob.glob(filter)
+        for f in files:
+            try:
+                os.remove(f)
+            except:
+                pass
+
+        return
+
+    def get_structure(self, url, hourly = True):
+
+        now = datetime.now()
+        data = None
+
+        if hourly:
+            ts = now.strftime("-%m_%d_%y_%H")
+        else:
+            ts = now.strftime("-%m_%d_%y")
+
+        hash = hashlib.md5(url.encode('utf-8')).hexdigest()
+        file = os.path.join(self.replicate_dir, hash + ts + ".json")
+
+        if os.path.exists(file):
+            try:
+                with open(file, 'r') as f:
+                    data = json.load(f)
+                return data
+            except:
+                pass
+
+        self._remove_old_files(url)
+
+        try:
+            r = requests.get(url)
+            if r.ok:
+                data = json.loads(r.text)
+        except:
+            pass
+
+        try:
+            with open(file, 'w') as f:
+                json.dump(data, f)
+        except:
+            pass
+        
+        return data
 
 class Speakleash(object):
 
     def __init__(self, replicate_dir):
+        
         self.replicate_dir = replicate_dir
         self.datasets = []
-        self.datasets.append(SpeakleashDataset("thesis", "https://zazepa.pl/speakleash/", self.replicate_dir))
-        self.datasets.append(SpeakleashDataset("plwiki", "https://zazepa.pl/speakleash/", self.replicate_dir))
-        self.datasets.append(SpeakleashDataset("1000_novels_corpus_CLARIN-PL", "https://zazepa.pl/speakleash/", self.replicate_dir))
-        self.datasets.append(SpeakleashDataset("wolne_lektury_corpus", "https://zazepa.pl/speakleash/", self.replicate_dir))
-        self.datasets.append(SpeakleashDataset("project_gutenberg_pl_corpus", "https://zazepa.pl/speakleash/", self.replicate_dir))
-        self.datasets.append(SpeakleashDataset("open_subtitles_corpus", "https://zazepa.pl/speakleash/", self.replicate_dir))
-        self.datasets.append(SpeakleashDataset("biblioteka_nauki_pl_corpus", "https://zazepa.pl/speakleash/", self.replicate_dir))
-        self.datasets.append(SpeakleashDataset("saos", "https://zazepa.pl/speakleash/", self.replicate_dir))
+        names = StructureDownloader(replicate_dir).get_structure("https://zazepa.pl/speakleash/speakleash.json")
+
+        if names:      
+            for item in names:
+                if "name" in item:
+                    self.datasets.append(SpeakleashDataset(item["name"], "https://zazepa.pl/speakleash/", self.replicate_dir))
+
     def get(self, name):
         for d in self.datasets:
             if d.name == name:
@@ -53,14 +112,13 @@ class SpeakleashDataset(object):
 
     def _download_manifest(self):
 
-        try:
-            r = requests.get(self.url + self.name + ".manifest")
-            if r.ok:
-                return json.loads(r.text)
-        except:
+        data =StructureDownloader(self.replicate_dir).get_structure(self.url + self.name + ".manifest")
+
+        if data:
+            return data
+        else:
             print("Error downloading manifest {0}".format(self.url + self.name + ".manifest"))
-            return{}
-                
+ 
         return {}
 
     @property
@@ -71,6 +129,11 @@ class SpeakleashDataset(object):
     @property
     def documents(self):
         s = self.manifest.get("stats",{}).get("documents",0)
+        return s
+
+    @property
+    def stopwords(self):
+        s = self.manifest.get("stats",{}).get("stopwords",0)
         return s
 
     @property
@@ -139,6 +202,13 @@ class SpeakleashDataset(object):
 
         return True, file_path_json_zst
 
+
+    @property
+    def samples(self):
+        data =StructureDownloader(self.replicate_dir).get_structure(self.url + self.name + ".sample", False)
+        if data:
+            return data
+        return []
 
     @property
     def ext_data(self):

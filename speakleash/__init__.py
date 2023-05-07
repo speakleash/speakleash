@@ -69,12 +69,12 @@ class Speakleash(object):
         
         self.replicate_dir = replicate_dir
         self.datasets = []
-        names = StructureDownloader(replicate_dir).get_structure("https://zazepa.pl/speakleash/speakleash.json")
+        names = StructureDownloader(replicate_dir).get_structure("https://speakleash.space/datasets_text/speakleash.json")
 
         if names:      
             for item in names:
                 if "name" in item:
-                    self.datasets.append(SpeakleashDataset(item["name"], "https://zazepa.pl/speakleash/", self.replicate_dir))
+                    self.datasets.append(SpeakleashDataset(item["name"], "https://speakleash.space/datasets_text/", self.replicate_dir))
 
     def get(self, name):
         for d in self.datasets:

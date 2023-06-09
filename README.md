@@ -82,7 +82,7 @@ import os
 base_dir = os.path.join(os.path.dirname(__file__))
 replicate_to = os.path.join(base_dir, "datasets")
 
-sl = Speakleash(replicate_t, "hr")
+sl = Speakleash(replicate_to, "hr")
 
 for d in sl.datasets:
     print(d.name)

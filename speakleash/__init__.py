@@ -65,16 +65,24 @@ class StructureDownloader(object):
 
 class Speakleash(object):
 
-    def __init__(self, replicate_dir):
+    def __init__(self, replicate_dir, lang = "pl"):
         
         self.replicate_dir = replicate_dir
         self.datasets = []
-        names = StructureDownloader(replicate_dir).get_structure("https://speakleash.space/datasets_text/speakleash.json")
+
+        url = "https://speakleash.space/datasets_text/"
+        structure_file = "speakleash.json"
+
+        if lang == "hr":
+            url = "https://speakleash.space/datasets_text_hr/"
+            structure_file = "speakleash_hr.json"
+
+        names = StructureDownloader(replicate_dir).get_structure(url + structure_file)
 
         if names:      
             for item in names:
                 if "name" in item:
-                    self.datasets.append(SpeakleashDataset(item["name"], "https://speakleash.space/datasets_text/", self.replicate_dir))
+                    self.datasets.append(SpeakleashDataset(item["name"], url, self.replicate_dir))
 
     def get(self, name):
         for d in self.datasets:

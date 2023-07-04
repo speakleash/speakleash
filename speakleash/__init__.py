@@ -155,7 +155,6 @@ class CategoryManager(object):
 
             if category_pl:
                 meta_categories = meta.get("category", {})
-                print(meta_categories)
                 for meta_category in meta_categories:
                     if meta_category.upper() == category_pl.upper():
                         if meta_categories[meta_category] >= cf:

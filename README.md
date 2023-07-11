@@ -24,18 +24,18 @@ for d in sl.datasets:
 ```
 
 You can use individual properties (e.g.:***characters***, ***documents***), but you can display the entire manifest
-```
+```python
 sl = Speakleash(replicate_to)
 print(sl.get("plwiki").manifest)
 
 ```
 
 If you chose one of them (***.get(name of dataset)***) then you will get a lot of text data ;-)
-```
+```python
 from speakleash import Speakleash
 import os
 
-base_dir = os.path.join(os.path.dirname(__file__))
+base_dir = os.path.join(os.path.dirname(__name__))
 replicate_to = os.path.join(base_dir, "datasets")
 
 sl = Speakleash(replicate_to)
@@ -47,7 +47,7 @@ for doc in wiki:
 ```
 
 If you also need meta data then use the ***ext_data*** property
-```
+```python
 
 ds = sl.get("plwiki").ext_data
 for doc in ds:
@@ -75,11 +75,11 @@ Popular meta data:
 
 On June 9, 2023, Croatia joined our projects. If you want to use Croatian language datasets just add lang parameter when creating Speakleash object.
 
-```
+```python
 from speakleash import Speakleash
 import os
 
-base_dir = os.path.join(os.path.dirname(__file__))
+base_dir = os.path.join(os.path.dirname(__name__))
 replicate_to = os.path.join(base_dir, "datasets")
 
 sl = Speakleash(replicate_to, "hr")

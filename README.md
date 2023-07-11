@@ -6,11 +6,11 @@ SpeakLeash agnostic dataset for Polish
 
 If you just want to see the details of the datasets
 
-```
+```python
 from speakleash import Speakleash
 import os
 
-base_dir = os.path.join(os.path.dirname(__file__))
+base_dir = os.path.join(os.path.dirname(__name__))
 replicate_to = os.path.join(base_dir, "datasets")
 
 sl = Speakleash(replicate_to)

@@ -184,11 +184,15 @@ class Speakleash(object):
                 if "name" in item:
                     self.datasets.append(SpeakleashDataset(item["name"], url, self.replicate_dir))
 
-    def get(self, name):
-        for d in self.datasets:
-            if d.name == name:
-                return d
-        return None
+    def get(self, name, url = None):
+
+        if url:
+            return SpeakleashDataset(name, url, self.replicate_dir)
+        else:
+            for d in self.datasets:
+                if d.name == name:
+                    return d
+            return None
 
 class SpeakleashDataset(object):
 

@@ -315,7 +315,6 @@ class SpeakleashDataset:
                 (os.path.getsize(file_path_json_zst) == self.jsonl_zst_file_size):
             return True, file_path_json_zst
 
-        print(f'self._download_file(file_name_json_zst): {self._download_file(file_name_json_zst)}')
         if not self._download_file(file_name_json_zst):
             return False, ""
 

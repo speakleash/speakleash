@@ -1,9 +1,9 @@
-import setuptools
+from setuptools import setup, find_packages
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-setuptools.setup(
+setup(
     name="speakleash",
     version="0.2.0",
     author="SpeakLeash Team",
@@ -12,7 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/speakleash/speakleash",
-    packages = ["speakleash"],
+    packages=find_packages(),
     python_requires='>=3.6',
     install_requires=[
         'requests',

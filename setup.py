@@ -18,5 +18,6 @@ setuptools.setup(
         'requests',
         'tqdm',
         'lm_dataformat'
-    ]
+    ],
+    data_files=[("", ["config.json"])]
 )

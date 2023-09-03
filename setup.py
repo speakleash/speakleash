@@ -18,5 +18,8 @@ setup(
         'requests',
         'tqdm',
         'lm_dataformat'
-    ]
+    ],
+    package_data={
+        'speakleash': ['config.json', 'config_loader.py']
+    }
 )

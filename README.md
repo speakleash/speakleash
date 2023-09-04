@@ -1,6 +1,38 @@
-# SpeakLeash
+<h1 align="center">
+<img src="https://speakleash.org/wp-content/uploads/2023/03/SpeakLeash_logo-2-1980x382.png" width="300">
+</h1><br>
 
-SpeakLeash agnostic dataset for Polish
+<p align="center">
+    <a href="https://pypi.org/project/speakleash">
+        <img src="https://img.shields.io/badge/pypi_package-0.2.3-blue">
+    </a>
+    <a href="https://speakleash.org/">
+        <img src="https://img.shields.io/badge/organisation-Speakleash-orange">
+    </a>
+    <a href="https://pypi.org/project/speakleash">
+        <img src="https://img.shields.io/badge/python-_>=_3.6-blue">
+    </a>
+    <a href="https://speakleash.org/dashboard/">
+        <img src="https://img.shields.io/badge/datasets-367_GB-brightgreen">
+    </a>
+    <a href="https://discord.com/invite/35cSny6Q?utm_source=Discord%20Widget&utm_medium=Connect">
+        <img src="https://img.shields.io/discord/1043112910278381619?logo=discord&label=discord&color=%23603FEF">
+    </a>
+</p>
+
+[SpeakLeash](href="https://pypi.org/project/speakleash) is a lightweight library providing datasets for the Polish language
+and tools to make them useful.
+
+- **Website:** https://speakleash.org/
+- **Source code:** https://github.com/speakleash/speakleash
+- **Bug reports:** https://github.com/speakleash/speakleash/issues
+
+## Installation
+
+Speakleash package can be installed from PyPi and has to be installed in a virtual environment:
+```
+pip install speakleash
+```
 
 ## Basic Usage
 

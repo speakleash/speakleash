@@ -1,5 +1,5 @@
 <h1 align="center">
-<img src="https://speakleash.org/wp-content/uploads/2023/03/SpeakLeash_logo-2-1980x382.png" width="300">
+<img src="https://raw.githubusercontent.com/speakleash/speakleash/main/branding/logo/speakleash_logo.png" width="300">
 </h1><br>
 
 <p align="center">
@@ -13,7 +13,7 @@
         <img src="https://img.shields.io/badge/python-_>=_3.6-blue">
     </a>
     <a href="https://speakleash.org/dashboard/">
-        <img src="https://img.shields.io/badge/datasets-367_GB-brightgreen">
+        <img src="https://img.shields.io/badge/dynamic/json?url=https://cutt.ly/lwlzZ4RZ&query=datasetsGB&suffix=%20GB&label=datasets&color=brightgreen">
     </a>
     <a href="https://discord.com/invite/35cSny6Q?utm_source=Discord%20Widget&utm_medium=Connect">
         <img src="https://img.shields.io/discord/1043112910278381619?logo=discord&label=discord&color=%23603FEF">

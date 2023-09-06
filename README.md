@@ -24,7 +24,9 @@
 and tools to make them useful.
 
 - **Website:** https://speakleash.org/
+- **Datasets** https://speakleash.org/dashboard/
 - **Source code:** https://github.com/speakleash/speakleash
+- **Data in action:** https://github.com/speakleash/speakleash-examples
 - **Bug reports:** https://github.com/speakleash/speakleash/issues
 
 ## Installation

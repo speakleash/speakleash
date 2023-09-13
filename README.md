@@ -103,7 +103,7 @@ Popular meta data:
 
 On June 9, 2023, Croatia joined our projects. If you want to use Croatian language datasets just add lang parameter when creating Speakleash object.
 
-```
+```python
 from speakleash import Speakleash
 import os
 

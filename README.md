@@ -32,7 +32,7 @@ and tools to make them useful.
 ## Installation
 
 Speakleash package can be installed from PyPi and has to be installed in a virtual environment:
-```
+```python
 pip install speakleash
 ```
 
@@ -40,7 +40,7 @@ pip install speakleash
 
 If you just want to see the details of the datasets
 
-```
+```python
 from speakleash import Speakleash
 import os
 
@@ -57,13 +57,13 @@ for d in sl.datasets:
 ```
 
 You can use individual properties (e.g.:***characters***, ***documents***), but you can display the entire manifest
-```
+```python
 sl = Speakleash(replicate_to)
 print(sl.get("plwiki").manifest)
 ```
 
 If you chose one of them (***.get(name of dataset)***) then you will get a lot of text data ;-)
-```
+```python
 from speakleash import Speakleash
 import os
 
@@ -78,7 +78,7 @@ for doc in wiki:
 ```
 
 If you also need meta data then use the ***ext_data*** property
-```
+```python
 ds = sl.get("plwiki").ext_data
 for doc in ds:
     print(doc)

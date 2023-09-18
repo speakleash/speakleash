@@ -13,7 +13,7 @@
         <img src="https://img.shields.io/badge/python-_>=_3.6-blue">
     </a>
     <a href="https://speakleash.org/dashboard/">
-        <img src="https://img.shields.io/badge/dynamic/json?url=https://cutt.ly/lwlzZ4RZ&query=datasetsGB&suffix=%20GB&label=datasets&color=brightgreen">
+        <img src="https://img.shields.io/badge/dynamic/json?url=https://cutt.ly/ywcfnFY7&query=datasetsGB&suffix=%20GB&label=datasets&color=brightgreen">
     </a>
     <a href="https://speakleash.org/spolecznosc-i-kontakt/">
         <img src="https://img.shields.io/discord/1043112910278381619?logo=discord&label=discord&color=%23603FEF">

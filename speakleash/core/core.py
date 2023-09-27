@@ -25,26 +25,30 @@ class Speakleash:
     responsible for managing and accessing datasets.
     """
 
-    def __init__(self, replicate_dir: str, lang: str = "pl"):
+    def __init__(self, replicate_dir: str, lang: str = "pl", file = None):
         """
         Initialize an instance of Speakleash class.
 
         :param replicate_dir: The directory to replicate the datasets.
         :param lang: The language for the Speakleash datasets (default is 'pl').
+        :param file: The structure file.
         """
         self.replicate_dir = replicate_dir
-        self.structure_file = self.get_structure_file(lang)
+        self.structure_file = self.get_structure_file(lang, file)
         self.url = self.get_url(lang)
         self.datasets = self.populate_datasets()
 
     @staticmethod
-    def get_structure_file(lang: str) -> str:
+    def get_structure_file(lang: str, file: str) -> str:
         """
         Retrieves the structure file based on the specified language.
 
         :param lang: The language code ('pl' or 'hr').
+        :param file: File to get structure from.
         :return: The name of the structure file corresponding to the language.
         """
+        if file:
+            return file
         if lang == 'hr':
             return "speakleash_hr.json"
         return "speakleash.json"

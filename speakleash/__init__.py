@@ -11,5 +11,3 @@ Modules:
 """
 from .core import Speakleash
 from .category_manager import CategoryManager
-from .dataset import SpeakleashDataset
-from .downloader import StructureDownloader

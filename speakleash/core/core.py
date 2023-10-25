@@ -13,6 +13,7 @@ Dependencies:
 - speakleash.downloader: Provides the StructureDownloader class for downloading dataset structures.
 - speakleash.config_loader: Provides the ConfigLoader class for loading configuration.
 """
+import os
 from typing import List, Optional
 
 from speakleash.dataset import SpeakleashDataset
@@ -25,17 +26,31 @@ class Speakleash:
     responsible for managing and accessing datasets.
     """
 
-    def __init__(self, replicate_dir: str, lang: str = "pl"):
+    def __init__(self, replicate_dir: Optional[str] = None, lang: str = "pl"):
         """
         Initialize an instance of Speakleash class.
 
         :param replicate_dir: The directory to replicate the datasets.
         :param lang: The language for the Speakleash datasets (default is 'pl').
         """
-        self.replicate_dir = replicate_dir
+        self.replicate_dir = self.dest_directory(replicate_dir)
         self.structure_file = self.get_structure_file(lang)
         self.url = self.get_url(lang)
         self.datasets = self.populate_datasets()
+
+    @staticmethod
+    def dest_directory(replicate_dir: str) -> str:
+        """
+        Returns the destination directory for the datasets. If the value of the replicate dir is empty or not
+        provided, it is set to 'datasets' as default.
+
+        :param replicate_dir: The directory name where the dataset should be replicated.
+        :return: The path to the destination directory.
+        """
+        if not replicate_dir:
+            replicate_dir = 'datasets'
+        base_dir = os.path.join(os.path.abspath(''))
+        return os.path.join(base_dir, replicate_dir)
 
     @staticmethod
     def get_structure_file(lang: str) -> str:

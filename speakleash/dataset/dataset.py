@@ -336,7 +336,7 @@ class SpeakleashDataset:
         """
         Extracts extended data from the dataset file.
 
-        :return: An iterator containing the streamed data with metadata, or None if the file check fails.
+        :return: A generator containing the streamed data with metadata, or None if the file check fails.
         """
         file_valid, file_path_json_zst = self.check_file()
 
@@ -350,7 +350,7 @@ class SpeakleashDataset:
         """
         Extracts data from the dataset file.
 
-        :return: An iterator containing the streamed data, or None if the file check fails.
+        :return: A generator containing the streamed data, or None if the file check fails.
         """
         file_valid, file_path_json_zst = self.check_file()
 

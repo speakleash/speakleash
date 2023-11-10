@@ -13,7 +13,7 @@ Dependencies:
 - speakleash.downloader: Provides the StructureDownloader class for downloading dataset structures.
 """
 import os
-from typing import Dict, Tuple, List, Union, Any
+from typing import Any, Dict, Generator, List, Optional, Tuple
 
 from lm_dataformat import Reader
 import requests
@@ -49,6 +49,7 @@ class SpeakleashDataset:
         self.url = url
         self.replicate_dir = replicate_dir
         self.manifest = self._download_manifest()
+        # print(f'self.name = {name}, self.ulr = {self.url}, self.replicate_dir = {self.replicate_dir}')
 
     def _download_file(self, file_name: str) -> bool:
         """
@@ -331,11 +332,11 @@ class SpeakleashDataset:
         return StructureDownloader(self.replicate_dir).get_structure(sample_url, False) or []
 
     @property
-    def ext_data(self) -> Union[None, List[str]]:
+    def ext_data(self) -> Optional[Generator[str, None, None]]:
         """
         Extracts extended data from the dataset file.
 
-        :return: A list containing the streamed data with metadata, or None if the file check fails.
+        :return: A generator containing the streamed data with metadata, or None if the file check fails.
         """
         file_valid, file_path_json_zst = self.check_file()
 
@@ -345,11 +346,11 @@ class SpeakleashDataset:
         return Reader(file_path_json_zst).stream_data(get_meta=True)
 
     @property
-    def data(self) -> Union[None, List[str]]:
+    def data(self) -> Optional[Generator[str, None, None]]:
         """
         Extracts data from the dataset file.
 
-        :return: A list containing the streamed data, or None if the file check fails.
+        :return: A generator containing the streamed data, or None if the file check fails.
         """
         file_valid, file_path_json_zst = self.check_file()
 

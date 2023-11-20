@@ -47,6 +47,7 @@ class SpeakleashDataset:
         """
         self.name = name
         self.url = url
+        print(f'----- self.url = {self.url}')
         self.replicate_dir = replicate_dir
         self.manifest = self._download_manifest()
 
@@ -61,6 +62,8 @@ class SpeakleashDataset:
         file_path = os.path.join(self.replicate_dir, file_name)
         response = requests.get(url, stream=True)
         total_size_in_bytes = int(response.headers.get('content-length', 0))
+        print(f'---- url = {url}')
+        print(f'---- total_size_in_butes = {total_size_in_bytes}')
 
         with open(file_path, 'wb') as file:
             progress_bar = self.display_progress_bar(response, file, total_size_in_bytes)

@@ -33,35 +33,40 @@ class Speakleash:
         :param lang: The language for the Speakleash datasets (default is 'pl').
         """
         self.replicate_dir = replicate_dir
-        self.structure_file = self.get_structure_file(lang)
-        self.url = self.get_url(lang)
+        self.lang = lang
+        self.structure_file = self.get_structure_file()
+        self.url = self.get_url()
         self.datasets = self.populate_datasets()
+        self.config = ConfigLoader.load_config()
 
-    @staticmethod
-    def get_structure_file(lang: str) -> str:
+
+    def get_structure_file(self) -> str:
         """
         Retrieves the structure file based on the specified language.
 
         :param lang: The language code ('pl' or 'hr').
         :return: The name of the structure file corresponding to the language.
         """
-        if lang == 'hr':
-            return "speakleash_hr.json"
-        return "speakleash.json"
+        # if self.lang == 'hr':
+        #     return "speakleash_hr.json"
+        # return "speakleash.json"
+        if self.lang == 'hr':
+            return self.config["structure_files"]["hr"]
+        return self.config["structure_files"]["pl"]
 
-    @staticmethod
-    def get_url(lang: str) -> str:
+    def get_url(self) -> str:
         """
         Retrieves the URL based on the provided language.
 
         :param lang: The language code ('pl' or 'hr').
         :return: The URL corresponding to the provided language.
         """
-        urls_config = ConfigLoader.load_config()
-
-        if lang == 'hr':
-            return urls_config["url_datasets_text_hr"]
-        return urls_config["url_datasets_text_pl"]
+        # if self.lang == 'hr':
+        #     return self.config["url_datasets_text_hr"]
+        # return self.config["url_datasets_text_pl"]
+        if self.lang == 'hr':
+            return self.config["urls"]["datasets"]["text_hr"]
+        return self.config["urls"]["datasets"]["text_pl"]
 
     def populate_datasets(self) -> Optional[List[SpeakleashDataset]]:
         """

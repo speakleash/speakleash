@@ -104,6 +104,8 @@ class StructureDownloader:
             response = requests.get(url)
             if response.ok:
                 self.data = json.loads(response.text)
+                # print(f'self.data')
+                # print(self.data)
         except:
             pass
 
@@ -132,8 +134,11 @@ class StructureDownloader:
         :return: The dataset structure.
         """
         timestamp = self.get_timestamp(hourly)
+        # print(f'timestamp: {timestamp}')
         url_hash = self.generate_hash(url)
+        # print(f'urlhash: {url_hash}')
         file = os.path.join(self.replicate_dir, f"{url_hash}{timestamp}.json")
+        # print(f'file: {file}')
 
         if os.path.exists(file):
             self.get_data_from_file(file)

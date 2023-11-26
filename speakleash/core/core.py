@@ -33,16 +33,16 @@ class Speakleash:
         :param replicate_dir: The directory to replicate the datasets.
         :param lang: The language for the Speakleash datasets (default is 'pl').
         """
-        self.replicate_dir = self.dest_directory(replicate_dir)
+        self.replicate_dir = self.destination_dir(replicate_dir)
         self.structure_file = self.get_structure_file(lang)
         self.url = self.get_url(lang)
         self.datasets = self.populate_datasets()
 
     @staticmethod
-    def dest_directory(replicate_dir: str) -> str:
+    def destination_dir(replicate_dir: str) -> str:
         """
-        Returns the destination directory for the datasets. If the value of the replicate dir is empty or not
-        provided, it is set to 'datasets' as default.
+        Returns the destination directory for datasets. If the 'replicate_dir' value is empty or not provided,
+        it is set to 'datasets' by default.
 
         :param replicate_dir: The directory name where the dataset should be replicated.
         :return: The path to the destination directory.

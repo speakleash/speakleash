@@ -40,10 +40,8 @@ replicate_to = os.path.join(base_dir, "datasets")
 sl = Speakleash(replicate_to)
 
 for d in sl.datasets:
-    print(d.name)
-    for doc in d.data:
-        size_mb = round(d.characters/1024/1024)
-        print("Dataset: {0}, size: {1} MB, characters: {2}, documents: {3}".format(d.name, size_mb, d.characters, d.documents))
+    size_mb = round(d.characters/1024/1024)
+    print("Dataset: {0}, size: {1} MB, characters: {2}, documents: {3}".format(d.name, size_mb, d.characters, d.documents))
 ```
 
 You can use individual properties (e.g.:***characters***, ***documents***), but you can display the entire manifest

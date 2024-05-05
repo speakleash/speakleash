@@ -49,7 +49,6 @@ class SpeakleashDataset:
         self.url = url
         self.replicate_dir = replicate_dir
         self.manifest = self._download_manifest()
-        # print(f'self.name = {name}, self.ulr = {self.url}, self.replicate_dir = {self.replicate_dir}')
 
     def _download_file(self, file_name: str) -> bool:
         """
@@ -61,7 +60,7 @@ class SpeakleashDataset:
         url = f"{self.url}{self.name}.jsonl.zst"
         file_path = os.path.join(self.replicate_dir, file_name)
         response = requests.get(url, stream=True)
-        total_size_in_bytes = int(response.headers.get('content-length', 0))
+        total_size_in_bytes = int(response.headers.get('Content-Length', 0))
 
         with open(file_path, 'wb') as file:
             progress_bar = self.display_progress_bar(response, file, total_size_in_bytes)

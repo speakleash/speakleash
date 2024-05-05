@@ -11,7 +11,7 @@
 </p>
 
 ### UPDATE 05.05.2024: 
-Due to the changes related with the hosting, it is recommended to update the varsion of the package newest one, using command:
+Due to the changes related with the hosting, it is recommended to update the version of the package to the newest one, using command:
 ```python
 pip install --upgrade speakleash
 ```

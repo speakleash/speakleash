@@ -10,6 +10,12 @@
     <a href="https://speakleash.org/spolecznosc-i-kontakt/"><img src="https://img.shields.io/discord/1043112910278381619?logo=discord&label=discord&color=%23603FEF"></a>
 </p>
 
+### UPDATE 05.05.2024: 
+Due to the changes related with the hosting, it is recommended to update the version of the package to the newest one, using command:
+```python
+pip install --upgrade speakleash
+```
+
 [SpeakLeash](href="https://pypi.org/project/speakleash) is a lightweight library providing datasets for the Polish language
 and tools to make them useful.
 

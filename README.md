@@ -85,23 +85,3 @@ Popular meta data:
 * nouns
 * symbols
 * punctuations
-
-
-## Supported languages
-
-On June 9, 2023, Croatia joined our projects. If you want to use Croatian language datasets just add lang parameter when creating Speakleash object.
-
-```python
-from speakleash import Speakleash
-import os
-
-base_dir = os.path.join(os.path.dirname(__file__))
-replicate_to = os.path.join(base_dir, "datasets")
-
-sl = Speakleash(replicate_to, "hr")
-
-for d in sl.datasets:
-    size_mb = round(d.characters/1024/1024)
-    print("Dataset: {0}, size: {1} MB, characters: {2}, documents: {3}".format(d.name, size_mb, d.characters, d.documents))
-
-```

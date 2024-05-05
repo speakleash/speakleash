@@ -20,6 +20,7 @@ from speakleash.dataset import SpeakleashDataset
 from speakleash.downloader import StructureDownloader
 from speakleash.config_loader import ConfigLoader
 
+
 class Speakleash:
     """
     Represents the Speakleash class, main entity object,
@@ -56,26 +57,23 @@ class Speakleash:
     def get_structure_file(lang: str) -> str:
         """
         Retrieves the structure file based on the specified language.
+        DISCLAIMER: Croatian language is currently not supported.
 
-        :param lang: The language code ('pl' or 'hr').
+        :param lang: The language code ('pl').
         :return: The name of the structure file corresponding to the language.
         """
-        if lang == 'hr':
-            return "speakleash_hr.json"
         return "speakleash.json"
 
     @staticmethod
     def get_url(lang: str) -> str:
         """
         Retrieves the URL based on the provided language.
+        DISCLAIMER: Croatian language is currently not supported.
 
-        :param lang: The language code ('pl' or 'hr').
+        :param lang: The language code ('pl').
         :return: The URL corresponding to the provided language.
         """
         urls_config = ConfigLoader.load_config()
-
-        if lang == 'hr':
-            return urls_config["url_datasets_text_hr"]
         return urls_config["url_datasets_text_pl"]
 
     def populate_datasets(self) -> Optional[List[SpeakleashDataset]]:

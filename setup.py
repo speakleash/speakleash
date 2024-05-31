@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="speakleash",
-    version="0.3.5",
+    version="0.3.51",
     author="SpeakLeash Team",
     author_email="team@speakleash.org",
     description="SpeakLeash agnostic dataset for Polish",

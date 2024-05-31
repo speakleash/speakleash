@@ -12,12 +12,12 @@
 
 ### UPDATE 05.05.2024: 
 Due to the changes related with the hosting, it is recommended to update the version of the package to the newest one, using command:
-```python
+```bash
 pip install --upgrade speakleash
 ```
 
-[SpeakLeash](href="https://pypi.org/project/speakleash) is a lightweight library providing datasets for the Polish language
-and tools to make them useful.
+[SpeakLeash](https://pypi.org/project/speakleash) is a lightweight library providing datasets for the Polish language
+and tools to make them useful:
 
 - **Website:** https://speakleash.org/
 - **Datasets:** https://speakleash.org/dashboard/
@@ -25,16 +25,19 @@ and tools to make them useful.
 - **Data in action:** https://github.com/speakleash/speakleash-examples
 - **Bug reports:** https://github.com/speakleash/speakleash/issues
 
-## Installation
+Installation
+----------------------
 
 Speakleash package can be installed from PyPi and has to be installed in a virtual environment:
-```python
+
+```bash
 pip install speakleash
 ```
 
-## Basic Usage
+Basic Usage
+----------------------
 
-If you just want to see the details of the datasets
+If you just want to see the details of the datasets:
 
 ```python
 from speakleash import Speakleash
@@ -50,13 +53,15 @@ for d in sl.datasets:
     print("Dataset: {0}, size: {1} MB, characters: {2}, documents: {3}".format(d.name, size_mb, d.characters, d.documents))
 ```
 
-You can use individual properties (e.g.:***characters***, ***documents***), but you can display the entire manifest
+You can use individual properties (e.g.:***characters***, ***documents***), but you can display the entire manifest:
+
 ```python
 sl = Speakleash(replicate_to)
 print(sl.get("plwiki").manifest)
 ```
 
-If you chose one of them (***.get(name of dataset)***) then you will get a lot of text data ;-)
+If you chose one of them (***.get(name of dataset)***) then you will get a lot of text data:
+
 ```python
 from speakleash import Speakleash
 import os
@@ -71,7 +76,8 @@ for doc in wiki:
     print(doc[:40])
 ```
 
-If you also need meta data then use the ***ext_data*** property
+If you also need meta data then use the ***ext_data*** property:
+
 ```python
 ds = sl.get("plwiki").ext_data
 for doc in ds:
